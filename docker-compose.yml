@@ -4,7 +4,7 @@ nginx:
     - letsencrypt
     - app
   environment:
-    - MY_DOMAIN_NAME=test005.noahsworldofwhatever.co.uk
+    - MY_DOMAIN_NAME=www.yourdomain.co.uk
   mem_limit: 2g
   cpu_shares: 256
   # restart: always
@@ -15,7 +15,7 @@ nginx:
     - letsencrypt
 letsencrypt:
   image: quay.io/letsencrypt/letsencrypt:latest
-  command:  certonly --standalone -d test005.noahsworldofwhatever.co.uk --text --agree-tos --email george@opsrobot.co.uk --server https://acme-v01.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --renew-by-default --standalone-supported-challenges http-01
+  command:  certonly --standalone -d www.yourdomain.co.uk --text --agree-tos --email george@opsrobot.co.uk --server https://acme-v01.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --renew-by-default --standalone-supported-challenges http-01
   # command:  certonly --standalone -d test001.opsrobot.co.uk --text --agree-tos --email george@opsrobot.co.uk --server https://acme-v01.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --renew-by-default --standalone-supported-challenges http-01
   volumes:
     - /etc/letsencrypt
@@ -26,6 +26,6 @@ letsencrypt:
   environment:
     - TERM=xterm
 app:
-  image: mock-server:1.0.0
+  build: mock_server
   ports:
     - "80"
