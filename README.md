@@ -91,11 +91,11 @@ http {
 }
 ```
 
-The service is now running over https. The letsencrypt container exited - this is what we want.
+The service is now running over https. 
 
 ## How to run it
 
-You need a docker server running on the public internet, with a DNS entry pointing at it. If you dont have this, see part 1 of this series.
+You need a docker server running on the public internet, with a DNS entry pointing at it. If you dont have this yet, use the [other repo](https://bitbucket.org/automationlogic/docker-machine-on-aws) in this series .
 
 ```
 git clone git@bitbucket.org:automationlogic/le-docker-compose.git
@@ -110,6 +110,8 @@ docker-compose  up
 ```
 
 An example app is now running securely. Try it with your browser!
+
+The letsencrypt container exited - this is what we want.
 
 
 ## Integrate your app
@@ -129,7 +131,7 @@ with
 
 ```
 app:
-  build: yourimage
+  image: yourimage
   ports:
     - "80"
 ```
