@@ -1,6 +1,6 @@
 # Deploy a dockerised web app over HTTPS with letsencrypt.
 
-This repo uses docker-compose to deploy any dockerised web app over HTTPS. 
+This repo uses docker-compose so you'll need to [install that](https://www.docker.com/docker-toolbox) if you dont have it.
 
 ## How it works
 
@@ -8,7 +8,7 @@ When you bring up the service with ```docker-compose up```, docker compose start
 
 The proxy image's init script starts nginx in the initial config:
 
-[Imgur](http://i.imgur.com/nHy2sEH.png)
+![Imgur](http://i.imgur.com/nHy2sEH.png)
 
 ```nginx
 events { worker_connections 1024; }
@@ -38,7 +38,7 @@ The initial config allows letsencrypt's acme challenge to get to the letsencrypt
 
 When letsencrypt issues the challenge request, the le client writes the certs to /etc/letsencrypt, which is a volume mounted to the nginx container. The nginx container's init script notices the certs appear, and loads a new config, setting up the https port forward.
 
-[Imgur](http://i.imgur.com/iGOGUgn.png)
+![Imgur](http://i.imgur.com/iGOGUgn.png)
 
 ```nginx
 events { worker_connections 1024; }
@@ -95,7 +95,7 @@ The service is now running over https. The letsencrypt container exited - this i
 
 ## How to run it
 
-You need a docker server running on the public internet, with a DNS entry pointing at it. If you dont have this, see part 1 of this blog entry.
+You need a docker server running on the public internet, with a DNS entry pointing at it. If you dont have this, see part 1 of this series.
 
 ```
 git clone git@bitbucket.org:automationlogic/le-docker-compose.git
