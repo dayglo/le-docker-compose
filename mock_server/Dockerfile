@@ -1,4 +1,4 @@
-FROM node:4.1.2
+FROM node:4.1.2-onbuild
 ENV payload={}
 ENV MODE=stdout
 ENV NODE_ENV=production
