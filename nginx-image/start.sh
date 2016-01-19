@@ -1,4 +1,14 @@
+echo sleep 3
+sleep 3
+
 echo build starting nginx config
+
+
+echo replacing ___my.example.com___/$MY_DOMAIN_NAME
+echo replacing ___LETSENCRYPT_IP___/$LETSENCRYPT_PORT_80_TCP_ADDR
+echo replacing ___LETSENCRYPT_PORT___/$LETSENCRYPT_PORT_80_TCP_PORT
+echo replacing ___APPLICATION_IP___/$APP_PORT_80_TCP_ADDR
+echo replacing ___APPLICATION_PORT___/$APP_PORT_80_TCP_PORT
 
 # Put your domain name into the nginx reverse proxy config.
 sed -i "s/___my.example.com___/$MY_DOMAIN_NAME/g" /etc/nginx/nginx.conf
