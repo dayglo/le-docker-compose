@@ -4,7 +4,7 @@ nginx:
     - letsencrypt
     - app
   environment:
-    - MY_DOMAIN_NAME=wat007.opsrobot.co.uk
+    - MY_DOMAIN_NAME=wat010.opsrobot.co.uk
   mem_limit: 2g
   cpu_shares: 256
   # restart: always
@@ -15,9 +15,7 @@ nginx:
     - letsencrypt
 letsencrypt:
   image: quay.io/letsencrypt/letsencrypt:latest
-  command:  certonly --standalone -d wat007.opsrobot.co.uk --text --agree-tos --email george@opsrobot.co.uk --server https://acme-v01.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --renew-by-default --standalone-supported-challenges http-01
-  # command:  certonly --standalone -d test001.opsrobot.co.uk --text --agree-tos --email george@opsrobot.co.uk --server https://acme-v01.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --renew-by-default --standalone-supported-challenges http-01
-  command:  bash -c "sleep 6 && letsencrypt certonly --standalone -d wat007.opsrobot.co.uk --text --agree-tos --email george@opsrobot.co.uk --server https://acme-v01.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --renew-by-default --standalone-supported-challenges http-01"
+  command:  bash -c "sleep 6 && letsencrypt certonly --standalone -d wat010.opsrobot.co.uk --text --agree-tos --email george@opsrobot.co.uk --server https://acme-v01.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --renew-by-default --standalone-supported-challenges http-01"
   entrypoint: ""
   volumes:
     - /etc/letsencrypt
@@ -28,6 +26,6 @@ letsencrypt:
   environment:
     - TERM=xterm
 app:
-  build: mock_server
+  build: app-image
   ports:
     - "80"
