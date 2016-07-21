@@ -72,7 +72,7 @@ sed -i "s/___APPLICATION_IP___/$APP_PORT_80_TCP_ADDR/g" /etc/nginx/nginx-secure.
 sed -i "s/___APPLICATION_PORT___/$APP_PORT_80_TCP_PORT/g" /etc/nginx/nginx-secure.conf
 
 #go!
-kill $(ps aux | grep 'nginx' | awk '{print $2}')
+kill $(ps aux | grep '[n]ginx' | awk '{print $2}')
 cp /etc/nginx/nginx-secure.conf /etc/nginx/nginx.conf
 
 nginx -g 'daemon off;'
